@@ -1,3 +1,6 @@
+const bookName = document.getElementById('name');
+const bookAuthor = document.getElementById('author');
+
 class BookManager {
   constructor() {
     this.bookList = null;

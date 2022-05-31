@@ -1,4 +1,4 @@
-export function storageAvailable(type) {
+function storageAvailable(type) {
   let storage;
   try {
     const x = '__storage_test__';
@@ -23,4 +23,4 @@ export function storageAvailable(type) {
                   && storage.length !== 0
     );
   }
-}
+} export default storageAvailable;

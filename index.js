@@ -1,45 +1,44 @@
 /* eslint-disable max-classes-per-file */
-/* eslint-disable */
 
-import { displaySection } from './modules/SPA.js';
+import displaySection from './modules/SPA.js';
 import { displayBook, resetInput } from './modules/displayBook.js';
-import { storageAvailable } from './modules/localStorage.js';
-import Book from './modules/bookClass.js';
-import { DateTime } from './modules/luxon/src/luxon.js';
+import storageAvailable from './modules/localStorage.js';
+// import Book from './modules/bookClass.js';
+import { DateTime } from './modules/luxon.js';
+import BookManager from './modules/bookManager.js';
 
+// class BookManager {
+//   constructor() {
+//     this.bookList = null;
+//   }
 
-class BookManager {
-  constructor() {
-    this.bookList = null;
-  }
+//   getBooks() {
+//     this.bookList = JSON.parse(localStorage.getItem('bookList')) || [];
+//     return this.bookList;
+//   }
 
-  getBooks() {
-    this.bookList = JSON.parse(localStorage.getItem('bookList')) || [];
-    return this.bookList;
-  }
+//   saveBooks() {
+//     localStorage.setItem('bookList', JSON.stringify(this.bookList));
+//   }
 
-  saveBooks() {
-    localStorage.setItem('bookList', JSON.stringify(this.bookList));
-  }
+//   addBook(title, author) {
+//     const bookId = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(2, 5);
+//     const newBook = new Book(title, author, bookId);
+//     this.bookList.push(newBook);
+//     return bookId;
+//   }
 
-  addBook(title, author) {
-    const bookId = Math.random().toString(36).replace(/[^a-z]+/g, '').slice(2, 5);
-    const newBook = new Book(title, author, bookId);
-    this.bookList.push(newBook);
-    return bookId;
-  }
+//   removeBook(e) {
+//     // Remove from localStorage
+//     this.bookList = JSON.parse(localStorage.getItem('bookList'));
+//     const bookId = e.target.id;
+//     const filteredBooks = this.bookList.filter((book) => book.id !== bookId);
+//     localStorage.setItem('bookList', JSON.stringify(filteredBooks));
 
-  removeBook(e) {
-    // Remove from localStorage
-    this.bookList = JSON.parse(localStorage.getItem('bookList'));
-    const bookId = e.target.id;
-    const filteredBooks = this.bookList.filter((book) => book.id !== bookId);
-    localStorage.setItem('bookList', JSON.stringify(filteredBooks));
-
-    // Remove from the Interface (DOM)
-    e.target.parentElement.parentElement.remove();
-  }
-}
+//     // Remove from the Interface (DOM)
+//     e.target.parentElement.parentElement.remove();
+//   }
+// }
 
 const bookName = document.getElementById('name');
 const bookAuthor = document.getElementById('author');
@@ -73,6 +72,5 @@ menuBtns.forEach((btn) => {
 
 // Adding date
 const dateContainer = document.querySelector('#date');
-const now = DateTime.local();
-
+const now = DateTime.now().toLocaleString(DateTime.DATETIME_MED);
 dateContainer.textContent = `${now}`;
