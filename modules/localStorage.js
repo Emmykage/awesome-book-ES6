@@ -1,15 +1,14 @@
-
 export function storageAvailable(type) {
-    let storage;
-    try {
-      const x = '__storage_test__';
-      storage = window[type];
-      storage.setItem(x, x);
-      storage.removeItem(x);
-      return true;
-    } catch (e) {
-      return (
-        e instanceof DOMException
+  let storage;
+  try {
+    const x = '__storage_test__';
+    storage = window[type];
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return (
+      e instanceof DOMException
                   // everything except Firefox
                   && (e.code === 22
                   // Firefox
@@ -22,6 +21,6 @@ export function storageAvailable(type) {
                   // acknowledge QuotaExceededError only if there's something already stored
                   && storage
                   && storage.length !== 0
-      );
-    }
+    );
   }
+}

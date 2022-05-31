@@ -1,22 +1,13 @@
 /* eslint-disable max-classes-per-file */
+/* eslint-disable */
 
-import {displaySection} from './modules/SPA.js';
-import {displayBook, resetInput} from './modules/displayBook.js';
-import {storageAvailable} from './modules/localStorage.js'
-// import {BookManager } from './modules/bookManager.js';
+import { displaySection } from './modules/SPA.js';
+import { displayBook, resetInput } from './modules/displayBook.js';
+import { storageAvailable } from './modules/localStorage.js';
+import Book from './modules/bookClass.js';
 import { DateTime } from './modules/luxon/src/luxon.js';
 
-// const { DateTime } = require("luxon");
 
-
-
- class Book {
-  constructor(title = null, author = null, id = null) {
-    this.title = title;
-    this.author = author;
-    this.id = id;
-  }
-}
 class BookManager {
   constructor() {
     this.bookList = null;
@@ -50,11 +41,6 @@ class BookManager {
   }
 }
 
-
-
- 
-
-
 const bookName = document.getElementById('name');
 const bookAuthor = document.getElementById('author');
 const addBtn = document.getElementById('add');
@@ -78,7 +64,6 @@ if (storageAvailable('localStorage')) {
   });
 }
 
-
 // // Menu links
 const menuBtns = document.querySelectorAll('.menuBtn');
 
@@ -86,11 +71,8 @@ menuBtns.forEach((btn) => {
   btn.addEventListener('click', displaySection);
 });
 
-
-
 // Adding date
 const dateContainer = document.querySelector('#date');
 const now = DateTime.local();
 
 dateContainer.textContent = `${now}`;
-console.log("now");
